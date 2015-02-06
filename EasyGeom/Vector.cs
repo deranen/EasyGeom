@@ -41,12 +41,22 @@ namespace EasyGeom
 
 		public static bool operator ==( Vector2 a, Vector2 b )
 		{
-			return a.Equals( b );
+			return a.X == b.X && a.Y == b.Y;
 		}
 
 		public static bool operator !=( Vector2 a, Vector2 b )
 		{
-			return !a.Equals( b );
+			return !(a == b);
+		}
+
+		public override bool Equals( object obj )
+		{
+			return (obj is Vector2) && (this == (Vector2) obj);
+		}
+
+		public override int GetHashCode()
+		{
+			return X.GetHashCode() ^ Y.GetHashCode();
 		}
 
 		#endregion
@@ -122,12 +132,22 @@ namespace EasyGeom
 
 		public static bool operator ==( Vector3 a, Vector3 b )
 		{
-			return a.Equals( b );
+			return a.X == b.X && a.Y == b.Y && a.Z == b.Z;
 		}
 
 		public static bool operator !=( Vector3 a, Vector3 b )
 		{
-			return !a.Equals( b );
+			return !(a == b);
+		}
+
+		public override bool Equals( object obj )
+		{
+			return (obj is Vector3) && (this == (Vector3) obj);
+		}
+
+		public override int GetHashCode()
+		{
+			return X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
 		}
 
 		#endregion

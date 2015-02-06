@@ -23,7 +23,7 @@ namespace EasyGeom
 			}
 		}
 
-		public double this[int i, int j]
+		public override double this[int i, int j]
 		{
 			get {
 				return base[_rowIndices[i], _colIndices[j]];
