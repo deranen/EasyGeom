@@ -1,0 +1,7 @@
+packages/
+EasyGeom/bin/
+EasyGeom/obj/
+EasyVis/bin/
+EasyVis/obj/
+
+*.suo
