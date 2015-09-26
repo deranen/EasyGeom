@@ -67,7 +67,7 @@ namespace EasyGeom
 			}
 		}
 
-		bool FindPivotIndex( IndexMatrix matrix, ref int i, ref int j )
+		static bool FindPivotIndex( Matrix matrix, ref int i, ref int j )
 		{
 			for( int jj = j; jj < matrix.ColCount; jj++ ) {
 				for( int ii = i; ii < matrix.RowCount; ii++ )

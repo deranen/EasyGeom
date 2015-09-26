@@ -81,7 +81,7 @@ namespace EasyGeom
 				throw new IncompatibleMatrixDimensionsException();
 			}
 
-			Matrix result = new Matrix( left.RowCount, left.ColCount );
+			var result = new Matrix( left.RowCount, left.ColCount );
 
 			for( int i = 0; i < left.RowCount; i++ ) {
 				for( int j = 0; j < left.ColCount; j++ ) {
@@ -98,7 +98,7 @@ namespace EasyGeom
 				throw new IncompatibleMatrixDimensionsException();
 			}
 
-			Matrix result = new Matrix( left.RowCount, left.ColCount );
+			var result = new Matrix( left.RowCount, left.ColCount );
 
 			for( int i = 0; i < left.RowCount; i++ ) {
 				for( int j = 0; j < left.ColCount; j++ ) {
@@ -111,7 +111,7 @@ namespace EasyGeom
 
 		public static Matrix operator *( double c, Matrix mat )
 		{
-			Matrix result = new Matrix( mat.RowCount, mat.ColCount );
+			var result = new Matrix( mat.RowCount, mat.ColCount );
 
 			for( int i = 0; i < mat.RowCount; i++ ) {
 				for( int j = 0; j < mat.ColCount; j++ ) {
@@ -138,7 +138,7 @@ namespace EasyGeom
 			int newRowCount = left.RowCount;
 			int newColCount = right.ColCount;
 
-			Matrix result = new Matrix( newRowCount, newColCount );
+			var result = new Matrix( newRowCount, newColCount );
 
 			for( int i = 0; i < newRowCount; i++ ) {
 				for( int j = 0; j < newColCount; j++ ) {

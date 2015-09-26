@@ -286,7 +286,7 @@ namespace EasyGeom
 
 		public double LengthSquared()
 		{
-			double lengthSquared = 0;
+			double lengthSquared = 0.0;
 
 			for( int i = 0; i < Size; i++ )
 			{
@@ -303,7 +303,7 @@ namespace EasyGeom
 				throw new IncompatibleVectorSizesException();
 			}
 
-			double dot = 0;
+			double dot = 0.0;
 
 			for( int i = 0; i < a.Size; i++ ) {
 				dot += a[i] * b[i];
