@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-
 namespace EasyGeom
 {
 	public class LinearSystem
@@ -32,7 +29,7 @@ namespace EasyGeom
 			int rowCount = _a.RowCount;
 			int colCount = _a.ColCount;
 
-			IndexMatrix matrix = new IndexMatrix( _a );
+			var matrix = new IndexMatrix( _a );
 
 			for( int i = 0, j = 0; i < rowCount && j < colCount; i++, j++ )
 			{
