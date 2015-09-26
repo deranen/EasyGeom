@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EasyGeom
+﻿namespace EasyGeom
 {
 	public static class Utils
 	{

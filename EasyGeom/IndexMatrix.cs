@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-
 namespace EasyGeom
 {
 	public class IndexMatrix : Matrix

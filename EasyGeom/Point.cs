@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EasyGeom
+﻿namespace EasyGeom
 {
 	public struct Point2
 	{
