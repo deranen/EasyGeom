@@ -67,7 +67,7 @@ namespace EasyGeom
 			set { _coeffs[i, j] = value; }
 		}
 
-		public virtual double this[ MatrixCoefficient c ]
+		public virtual double this[ MatrixCoeff c ]
 		{
 			get { return this[c.I, c.J]; }
 			set { this[c.I, c.J] = value; }
@@ -276,25 +276,25 @@ namespace EasyGeom
 
 		#region Iterators
 
-		public IEnumerable<MatrixCoefficient> CoefficientIterator()
+		public IEnumerable<MatrixCoeff> CoefficientIterator()
 		{
 			for( int i = 0; i < RowCount; i++ ) {
 				for( int j = 0; j < ColCount; j++ ) {
-					yield return new MatrixCoefficient( i, j, this[i, j] );
+					yield return new MatrixCoeff( i, j, this[i, j] );
 				}
 			}
 		}
 
-		public IEnumerable<MatrixCoefficient> DiagonalIterator()
+		public IEnumerable<MatrixCoeff> DiagonalIterator()
 		{
 			int diagonalLength = Math.Min( RowCount, ColCount );
 
 			for( int d = 0; d < diagonalLength; d++ ) {
-				yield return new MatrixCoefficient( d, d, this[d, d] );
+				yield return new MatrixCoeff( d, d, this[d, d] );
 			}
 		}
 
-		public IEnumerable<MatrixCoefficient> UpperTriangleIterator()
+		public IEnumerable<MatrixCoeff> UpperTriangleIterator()
 		{
 			if( !IsSquare() ) {
 				throw new NonSquareMatrixException();
@@ -302,12 +302,12 @@ namespace EasyGeom
 
 			for( int i = 0; i < RowCount - 1; i++ ) {
 				for( int j = i + 1; j < ColCount; j++ ) {
-					yield return new MatrixCoefficient( i, j, this[i, j] );
+					yield return new MatrixCoeff( i, j, this[i, j] );
 				}
 			}
 		}
 
-		public IEnumerable<MatrixCoefficient> LowerTriangleIterator()
+		public IEnumerable<MatrixCoeff> LowerTriangleIterator()
 		{
 			if( !IsSquare() ) {
 				throw new NonSquareMatrixException();
@@ -315,7 +315,7 @@ namespace EasyGeom
 
 			for( int i = 1; i < RowCount; i++ ) {
 				for( int j = 0; j < i; j++ ) {
-					yield return new MatrixCoefficient( i, j, this[i, j] );
+					yield return new MatrixCoeff( i, j, this[i, j] );
 				}
 			}
 		}
