@@ -36,9 +36,9 @@
     <Compile Include="Vector.cs" />
     <Compile Include="Matrix.cs" />
     <Compile Include="IndexMatrix.cs" />
-    <Compile Include="MatrixCoefficient.cs" />
     <Compile Include="LinearSystem.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="MatrixCoeff.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
