@@ -85,6 +85,13 @@ namespace EasyGeom
 			this /= Length();
 		}
 
+		public double DistanceTo( Vector2 vec )
+		{
+			double distance = (vec - this).Length();
+
+			return distance;
+		}
+
 		public static double Dot( Vector2 a, Vector2 b )
 		{
 			return a.X * b.X + a.Y * b.Y;
@@ -174,6 +181,13 @@ namespace EasyGeom
 			}
 
 			this /= Length();
+		}
+
+		public double DistanceTo( Vector3 vec )
+		{
+			double distance = (vec - this).Length();
+
+			return distance;
 		}
 
 		public static double Dot( Vector3 a, Vector3 b )

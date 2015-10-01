@@ -12,6 +12,13 @@
 			Y = y;
 		}
 
+		public double DistanceTo( Point2 pt )
+		{
+			double distance = (pt - this).Length();
+
+			return distance;
+		}
+
 		#region Operator overloads
 
 		public static Point2 operator +( Point2 a, Point2 b )
@@ -72,6 +79,13 @@
 			Z = z;
 		}
 
+		public double DistanceTo( Point3 pt )
+		{
+			double distance = (pt - this).Length();
+
+			return distance;
+		}
+
 		#region Operator overloads
 
 		public static Point3 operator +( Point3 a, Point3 b )
@@ -79,9 +93,9 @@
 			return new Point3( a.X + b.X, a.Y + b.Y, a.Z + b.Z );
 		}
 
-		public static Point3 operator -( Point3 a, Point3 b )
+		public static Vector3 operator -( Point3 a, Point3 b )
 		{
-			return new Point3( a.X - b.X, a.Y - b.Y, a.Z - b.Z );
+			return new Vector3( a.X - b.X, a.Y - b.Y, a.Z - b.Z );
 		}
 
 		public static Point3 operator *( double c, Point3 pt )
