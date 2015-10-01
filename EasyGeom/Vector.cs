@@ -246,9 +246,9 @@ namespace EasyGeom
 				return ZeroVector;
 			}
 
-			double dotDenom = Dot( a, a );
+			double dotDenom = Dot( b, b );
 
-			Vector3 vecProjection = (dotNumer / dotDenom) * a;
+			Vector3 vecProjection = (dotNumer / dotDenom) * b;
 
 			return vecProjection;
 		}
