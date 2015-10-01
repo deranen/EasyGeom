@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace EasyGeom
 {
@@ -190,6 +191,11 @@ namespace EasyGeom
 			return distance;
 		}
 
+		public Vector3 ProjectionOnto( Vector3 vec )
+		{
+			return Project( this, vec );
+		}
+
 		public static double Dot( Vector3 a, Vector3 b )
 		{
 			return a.X * b.X + a.Y * b.Y + a.Z * b.Z;
@@ -202,6 +208,49 @@ namespace EasyGeom
 			double z = a.X * b.Y - a.Y * b.X;
 
 			return new Vector3( x, y, z );
+		}
+
+		public static double AngleBetween( Vector3 a, Vector3 b )
+		{
+			if( a.IsZeroVector() || b.IsZeroVector() ) {
+				throw new ZeroVectorException( "Can't measure angle with the zero-vector." );
+			}
+
+			double dot = Dot( a, b );
+
+			if( dot == 0.0 ) {
+				return Math.PI / 2.0;
+			}
+
+			double lengthA = a.Length();
+			double lengthB = b.Length();
+
+			double cosineOfAngle = dot / (lengthA * lengthB);
+			double angle = Math.Acos( cosineOfAngle );
+
+			return angle;
+		}
+
+		public static Vector3 Project( Vector3 a, Vector3 b )
+		{
+			if( a.IsZeroVector() ) {
+				throw new ZeroVectorException( "Can't project with the zero-vector." );
+			}
+			if( b.IsZeroVector() ) {
+				throw new ZeroVectorException( "Can't project onto the zero-vector." );
+			}
+
+			double dotNumer = Dot( a, b );
+
+			if( dotNumer == 0.0 ) {
+				return ZeroVector;
+			}
+
+			double dotDenom = Dot( a, a );
+
+			Vector3 vecProjection = (dotNumer / dotDenom) * a;
+
+			return vecProjection;
 		}
 	}
 
