@@ -8,7 +8,6 @@ namespace EasyGeom
 		{
 			_a = new Matrix( a );
 		}
-			
 
 		public Matrix GetEchelonForm()
 		{
