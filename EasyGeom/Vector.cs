@@ -92,6 +92,13 @@ namespace EasyGeom
 			return distance;
 		}
 
+		public static Vector2D Normalize( Vector2D vec )
+		{
+			vec.Normalize();
+
+			return vec;
+		}
+
 		public static double Dot( Vector2D a, Vector2D b )
 		{
 			return a.X * b.X + a.Y * b.Y;
@@ -193,6 +200,13 @@ namespace EasyGeom
 		public Vector3D ProjectionOnto( Vector3D vec )
 		{
 			return Project( this, vec );
+		}
+
+		public static Vector3D Normalize( Vector3D vec )
+		{
+			vec.Normalize();
+
+			return vec;
 		}
 
 		public static double Dot( Vector3D a, Vector3D b )

@@ -39,6 +39,7 @@
     <Compile Include="LinearSystem.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="MatrixCoeff.cs" />
+    <Compile Include="Line.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
