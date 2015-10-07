@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace EasyGeom
 {
-	public struct Vector2
+	public struct Vector2D
 	{
 		public double X { get; set; }
 		public double Y { get; set; }
 
-		public static Vector2 ZeroVector = new Vector2( 0.0, 0.0 );
+		public static Vector2D ZeroVector = new Vector2D( 0.0, 0.0 );
 
-		public Vector2( double x, double y )
+		public Vector2D( double x, double y )
 			: this()
 		{
 			X = x;
@@ -19,40 +18,40 @@ namespace EasyGeom
 
 		#region Operator overloads
 
-		public static Vector2 operator +( Vector2 a, Vector2 b )
+		public static Vector2D operator +( Vector2D a, Vector2D b )
 		{
-			return new Vector2( a.X + b.X, a.Y + b.Y );
+			return new Vector2D( a.X + b.X, a.Y + b.Y );
 		}
 
-		public static Vector2 operator -( Vector2 a, Vector2 b )
+		public static Vector2D operator -( Vector2D a, Vector2D b )
 		{
-			return new Vector2( a.X - b.X, a.Y - b.Y );
+			return new Vector2D( a.X - b.X, a.Y - b.Y );
 		}
 
-		public static Vector2 operator *( double c, Vector2 vec )
+		public static Vector2D operator *( double c, Vector2D vec )
 		{
-			return new Vector2( c * vec.X, c * vec.Y );
+			return new Vector2D( c * vec.X, c * vec.Y );
 		}
 
-		public static Vector2 operator /( Vector2 vec, double c )
+		public static Vector2D operator /( Vector2D vec, double c )
 		{
 			double cInverse = 1.0 / c;
-			return new Vector2( cInverse * vec.X, cInverse * vec.Y );
+			return new Vector2D( cInverse * vec.X, cInverse * vec.Y );
 		}
 
-		public static bool operator ==( Vector2 a, Vector2 b )
+		public static bool operator ==( Vector2D a, Vector2D b )
 		{
 			return a.X == b.X && a.Y == b.Y;
 		}
 
-		public static bool operator !=( Vector2 a, Vector2 b )
+		public static bool operator !=( Vector2D a, Vector2D b )
 		{
 			return !(a == b);
 		}
 
 		public override bool Equals( object obj )
 		{
-			return (obj is Vector2) && (this == (Vector2) obj);
+			return (obj is Vector2D) && (this == (Vector2D) obj);
 		}
 
 		public override int GetHashCode()
@@ -86,28 +85,28 @@ namespace EasyGeom
 			this /= Length();
 		}
 
-		public double DistanceTo( Vector2 vec )
+		public double DistanceTo( Vector2D vec )
 		{
 			double distance = (vec - this).Length();
 
 			return distance;
 		}
 
-		public static double Dot( Vector2 a, Vector2 b )
+		public static double Dot( Vector2D a, Vector2D b )
 		{
 			return a.X * b.X + a.Y * b.Y;
 		}
 	}
 
-	public struct Vector3
+	public struct Vector3D
 	{
 		public double X { get; set; }
 		public double Y { get; set; }
 		public double Z { get; set; }
 
-		public static Vector3 ZeroVector = new Vector3( 0.0, 0.0, 0.0 );
+		public static Vector3D ZeroVector = new Vector3D( 0.0, 0.0, 0.0 );
 
-		public Vector3( double x, double y, double z )
+		public Vector3D( double x, double y, double z )
 			: this()
 		{
 			X = x;
@@ -117,40 +116,40 @@ namespace EasyGeom
 
 		#region Operator overloads
 
-		public static Vector3 operator +( Vector3 a, Vector3 b )
+		public static Vector3D operator +( Vector3D a, Vector3D b )
 		{
-			return new Vector3( a.X + b.X, a.Y + b.Y, a.Z + b.Z );
+			return new Vector3D( a.X + b.X, a.Y + b.Y, a.Z + b.Z );
 		}
 
-		public static Vector3 operator -( Vector3 a, Vector3 b )
+		public static Vector3D operator -( Vector3D a, Vector3D b )
 		{
-			return new Vector3( a.X - b.X, a.Y - b.Y, a.Z - b.Z );
+			return new Vector3D( a.X - b.X, a.Y - b.Y, a.Z - b.Z );
 		}
 
-		public static Vector3 operator *( double c, Vector3 vec )
+		public static Vector3D operator *( double c, Vector3D vec )
 		{
-			return new Vector3( c * vec.X, c * vec.Y, c * vec.Z );
+			return new Vector3D( c * vec.X, c * vec.Y, c * vec.Z );
 		}
 
-		public static Vector3 operator /( Vector3 vec, double c )
+		public static Vector3D operator /( Vector3D vec, double c )
 		{
 			double cInverse = 1.0 / c;
-			return new Vector3( cInverse * vec.X, cInverse * vec.Y, cInverse * vec.Z );
+			return new Vector3D( cInverse * vec.X, cInverse * vec.Y, cInverse * vec.Z );
 		}
 
-		public static bool operator ==( Vector3 a, Vector3 b )
+		public static bool operator ==( Vector3D a, Vector3D b )
 		{
 			return a.X == b.X && a.Y == b.Y && a.Z == b.Z;
 		}
 
-		public static bool operator !=( Vector3 a, Vector3 b )
+		public static bool operator !=( Vector3D a, Vector3D b )
 		{
 			return !(a == b);
 		}
 
 		public override bool Equals( object obj )
 		{
-			return (obj is Vector3) && (this == (Vector3) obj);
+			return (obj is Vector3D) && (this == (Vector3D) obj);
 		}
 
 		public override int GetHashCode()
@@ -184,33 +183,33 @@ namespace EasyGeom
 			this /= Length();
 		}
 
-		public double DistanceTo( Vector3 vec )
+		public double DistanceTo( Vector3D vec )
 		{
 			double distance = (vec - this).Length();
 
 			return distance;
 		}
 
-		public Vector3 ProjectionOnto( Vector3 vec )
+		public Vector3D ProjectionOnto( Vector3D vec )
 		{
 			return Project( this, vec );
 		}
 
-		public static double Dot( Vector3 a, Vector3 b )
+		public static double Dot( Vector3D a, Vector3D b )
 		{
 			return a.X * b.X + a.Y * b.Y + a.Z * b.Z;
 		}
 
-		public static Vector3 Cross( Vector3 a, Vector3 b )
+		public static Vector3D Cross( Vector3D a, Vector3D b )
 		{
 			double x = a.Y * b.Z - a.Z * b.Y;
 			double y = a.Z * b.X - a.X * b.Z;
 			double z = a.X * b.Y - a.Y * b.X;
 
-			return new Vector3( x, y, z );
+			return new Vector3D( x, y, z );
 		}
 
-		public static double AngleBetween( Vector3 a, Vector3 b )
+		public static double AngleBetween( Vector3D a, Vector3D b )
 		{
 			if( a.IsZeroVector() || b.IsZeroVector() ) {
 				throw new ZeroVectorException( "Can't measure angle with the zero-vector." );
@@ -231,7 +230,7 @@ namespace EasyGeom
 			return angle;
 		}
 
-		public static Vector3 Project( Vector3 a, Vector3 b )
+		public static Vector3D Project( Vector3D a, Vector3D b )
 		{
 			if( a.IsZeroVector() ) {
 				throw new ZeroVectorException( "Can't project with the zero-vector." );
@@ -248,7 +247,7 @@ namespace EasyGeom
 
 			double dotDenom = Dot( b, b );
 
-			Vector3 vecProjection = (dotNumer / dotDenom) * b;
+			Vector3D vecProjection = (dotNumer / dotDenom) * b;
 
 			return vecProjection;
 		}
