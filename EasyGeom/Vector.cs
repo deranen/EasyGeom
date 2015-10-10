@@ -92,6 +92,11 @@ namespace EasyGeom
 			return distance;
 		}
 
+		public Vector2D ProjectOnto( Vector2D vec )
+		{
+			return Project( this, vec );
+		}
+
 		public static Vector2D Normalize( Vector2D vec )
 		{
 			vec.Normalize();
@@ -99,9 +104,35 @@ namespace EasyGeom
 			return vec;
 		}
 
+		public static Vector2D NormalVector( Vector2D vec )
+		{
+			var vecNormal = new Vector2D( -vec.Y, vec.X );
+
+			return vecNormal;
+		}
+
 		public static double Dot( Vector2D a, Vector2D b )
 		{
 			return a.X * b.X + a.Y * b.Y;
+		}
+
+		public static Vector2D Project( Vector2D a, Vector2D b )
+		{
+			if( a.IsZeroVector() || b.IsZeroVector() ) {
+				return ZeroVector;
+			}
+
+			double dotNumer = Dot( a, b );
+
+			if( dotNumer == 0.0 ) {
+				return ZeroVector;
+			}
+
+			double dotDenom = Dot( b, b );
+
+			Vector2D vecProjection = (dotNumer / dotDenom) * b;
+
+			return vecProjection;
 		}
 	}
 
@@ -246,11 +277,8 @@ namespace EasyGeom
 
 		public static Vector3D Project( Vector3D a, Vector3D b )
 		{
-			if( a.IsZeroVector() ) {
-				throw new ZeroVectorException( "Can't project with the zero-vector." );
-			}
-			if( b.IsZeroVector() ) {
-				throw new ZeroVectorException( "Can't project onto the zero-vector." );
+			if( a.IsZeroVector() || b.IsZeroVector() ) {
+				return ZeroVector;
 			}
 
 			double dotNumer = Dot( a, b );
