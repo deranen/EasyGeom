@@ -21,23 +21,15 @@
 
 		public double DistanceTo( Line2D line )
 		{
-			return DistanceBetween( this, line );
-		}
-
-		public static double DistanceBetween( Point2D point, Line2D line )
-		{
-			Point2D  linePoint = line.PointAt( 0.0 );
-			Vector2D lineDir   = line.Direction();
-
-			Vector2D v = point - linePoint;
-			Vector2D projVector = v.ProjectOnto( lineDir );
-
-			double distance = (v - projVector).Length();
-
-			return distance;
+			return line.DistanceTo( this );
 		}
 
 		#region Operator overloads
+
+		static public implicit operator Point2D( Vector2D v )
+		{
+			return new Point2D( v.X, v.Y );
+		}
 
 		public static Point2D operator +( Point2D a, Point2D b )
 		{
@@ -105,6 +97,11 @@
 		}
 
 		#region Operator overloads
+
+		static public implicit operator Point3D( Vector3D v )
+		{
+			return new Point3D( v.X, v.Y, v.Z );
+		}
 
 		public static Point3D operator +( Point3D a, Point3D b )
 		{

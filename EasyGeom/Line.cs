@@ -31,16 +31,30 @@ namespace EasyGeom
 			_d = d;
 		}
 
-		public Point2D PointAt( double t )
+		public Vector2D Direction
 		{
-			Point2D p = _p + t * _d;
-
-			return p;
+			get { return _d; }
 		}
 
-		public Vector2D Direction()
+		public Point2D PointOnLine
 		{
-			return _d;
+			get { return _p; }
+		}
+
+		public double DistanceTo( Point2D p )
+		{
+			return DistanceBetween( p, this );
+		}
+
+		public static double DistanceBetween( Point2D p, Line2D l )
+		{
+			Point2D  linePt    = l.PointOnLine;
+			Vector2D ptToPt    = p - linePt;
+			Point2D  closestPt = linePt + ptToPt.ProjectionOnto( l.Direction );
+
+			double distance = p.DistanceTo( closestPt );
+
+			return distance;
 		}
 	}
 
@@ -73,16 +87,30 @@ namespace EasyGeom
 			_d = d;
 		}
 
-		public Point3D PointAt( double t )
+		public Vector3D Direction
 		{
-			Point3D p = _p + t * _d;
-
-			return p;
+			get { return _d; }
 		}
 
-		public Vector3D Direction()
+		public Point3D PointOnLine
 		{
-			return _d;
+			get { return _p; }
+		}
+
+		public double DistanceTo( Point3D p )
+		{
+			return DistanceBetween( p, this );
+		}
+
+		public static double DistanceBetween( Point3D p, Line3D l )
+		{
+			Point3D  linePt    = l.PointOnLine;
+			Vector3D ptToPt    = p - linePt;
+			Point3D  closestPt = linePt + ptToPt.ProjectionOnto( l.Direction );
+
+			double distance = p.DistanceTo( closestPt );
+
+			return distance;
 		}
 	}
 }

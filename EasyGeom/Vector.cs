@@ -18,6 +18,11 @@ namespace EasyGeom
 
 		#region Operator overloads
 
+		static public implicit operator Vector2D( Point2D p )
+		{
+			return new Vector2D( p.X, p.Y );
+		}
+
 		public static Vector2D operator +( Vector2D a, Vector2D b )
 		{
 			return new Vector2D( a.X + b.X, a.Y + b.Y );
@@ -92,7 +97,7 @@ namespace EasyGeom
 			return distance;
 		}
 
-		public Vector2D ProjectOnto( Vector2D vec )
+		public Vector2D ProjectionOnto( Vector2D vec )
 		{
 			return Project( this, vec );
 		}
@@ -102,13 +107,6 @@ namespace EasyGeom
 			vec.Normalize();
 
 			return vec;
-		}
-
-		public static Vector2D NormalVector( Vector2D vec )
-		{
-			var vecNormal = new Vector2D( -vec.Y, vec.X );
-
-			return vecNormal;
 		}
 
 		public static double Dot( Vector2D a, Vector2D b )
@@ -153,6 +151,11 @@ namespace EasyGeom
 		}
 
 		#region Operator overloads
+
+		static public implicit operator Vector3D( Point3D p )
+		{
+			return new Vector3D( p.X, p.Y, p.Z );
+		}
 
 		public static Vector3D operator +( Vector3D a, Vector3D b )
 		{
@@ -252,6 +255,25 @@ namespace EasyGeom
 			double z = a.X * b.Y - a.Y * b.X;
 
 			return new Vector3D( x, y, z );
+		}
+
+		public static Vector3D FindOrthogonalVectorTo( Vector3D vec )
+		{
+			if( vec.IsZeroVector() ) {
+				throw new ZeroVectorException( "Can't find vector orthogonal to the zero-vector." );
+			}
+
+			Vector3D ortho;
+
+			if( vec.X != 0.0 ) {
+				ortho.X = -vec.Y;
+				ortho.Y =  vec.X;
+			} else {
+				ortho.Y = -vec.Z;
+				ortho.Z =  vec.Y;
+			}
+
+			return ortho;
 		}
 
 		public static double AngleBetween( Vector3D a, Vector3D b )
