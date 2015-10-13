@@ -263,7 +263,7 @@ namespace EasyGeom
 				throw new ZeroVectorException( "Can't find vector orthogonal to the zero-vector." );
 			}
 
-			Vector3D ortho;
+			var ortho = new Vector3D();
 
 			if( vec.X != 0.0 ) {
 				ortho.X = -vec.Y;

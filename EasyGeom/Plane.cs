@@ -5,12 +5,12 @@ namespace EasyGeom
 	public class Plane
 	{
 		readonly Point3D  _p; // Point on plane
-		readonly Vector3D _n; // Plane normal
+		readonly Vector3D _n; // Plane normal (normalized)
 
 		public Plane( Point3D p, Vector3D n )
 		{
 			if( n.IsZeroVector() ) {
-				throw ZeroVectorException("Can't construct a Plane using the zero vector.");
+				throw new ZeroVectorException("Can't construct a Plane using the zero vector.");
 			}
 
 			n.Normalize();
@@ -27,7 +27,7 @@ namespace EasyGeom
 			Vector3D n = Vector3D.Cross( u, v );
 
 			if( n.IsZeroVector() ) {
-				throw ZeroVectorException("Can't construct a Plane using three collinear points.");
+				throw new ZeroVectorException("Can't construct a Plane using three collinear points.");
 			}
 
 			n.Normalize();
